@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="A calm study, task and focus-time space that works offline on PC and phone." />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <title>Study Space</title>
+    <style>
+      /* Painted before any script or stylesheet loads, so the viewport is never black or white
+         in the wrong theme while the app starts or redraws. */
+      html, body, #root { background-color: #F5F5F7; }
+      html.dark, html.dark body, html.dark #root { background-color: #0B0D12; }
+      html { color-scheme: light; }
+      html.dark { color-scheme: dark; }
+    </style>
+    <script>
+      try {
+        var p = JSON.parse(localStorage.getItem('study-space:prefs') || '{}');
+        if (p.theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

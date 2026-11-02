@@ -1,0 +1,198 @@
+@import '@fontsource-variable/inter';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /*
+   * Clean taps on phones. `manipulation` keeps scrolling and pinch zoom but drops double-tap
+   * zoom, so a tap is delivered at once and is never read as half of a double tap. Set on the
+   * root, it applies to the whole page; the list below states it for every tappable element too,
+   * since some controls (for example inside the Picture-in-Picture window) live outside it.
+   */
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  button,
+  a,
+  label,
+  select,
+  summary,
+  input,
+  textarea,
+  [role='button'],
+  [role='tab'],
+  [role='radio'],
+  [role='switch'],
+  [role='checkbox'],
+  [role='menuitem'],
+  [role='option'],
+  .card,
+  .card-plain {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased dark:bg-canvas-dark dark:text-zinc-100;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  :root {
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-peach-deep/50 ring-offset-1 ring-offset-white dark:ring-offset-surface-dark;
+  }
+  ::selection {
+    @apply bg-peach/40;
+  }
+}
+
+@layer components {
+  /*
+   * Specular glass. In dark mode every card is a translucent surface with a brighter 1px top
+   * edge and a soft top-down sheen. There is no backdrop-filter: the canvas behind the cards is
+   * flat apart from one soft glow, so a blur would look the same while costing a GPU blur pass
+   * per card on every scroll frame on a phone. Real blur stays on overlays (see the smoke test).
+   */
+  .card {
+    @apply rounded-2xl border border-zinc-200/70 bg-zinc-50/70 dark:border-white/[0.08] dark:border-t-white/[0.14] dark:bg-white/[0.03] dark:shadow-[0_8px_24px_rgba(0,0,0,0.25)];
+  }
+  .card-plain {
+    @apply rounded-2xl border border-zinc-200/80 bg-white shadow-sm dark:border-white/[0.08] dark:border-t-white/[0.14] dark:bg-white/[0.03] dark:shadow-[0_8px_24px_rgba(0,0,0,0.25)];
+  }
+  .dark .card,
+  .dark .card-plain,
+  .dark .glass {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 42%);
+  }
+  /* Inner glass sub-card: one step up from its card. */
+  .glass {
+    @apply rounded-2xl border border-zinc-200/80 bg-white dark:border-white/[0.07] dark:border-t-white/[0.12] dark:bg-white/[0.03];
+  }
+  /* Golden 1px top edge, used when a goal or streak is locked in. */
+  .edge-gold {
+    @apply border-t-amber-400/60 dark:border-t-amber-300/45 dark:shadow-[0_8px_30px_rgba(234,179,8,0.12)];
+  }
+  /* Short tactile press for small tap targets (transform only). */
+  .press {
+    @apply transition-transform active:scale-[0.97];
+  }
+  .field {
+    @apply w-full rounded-xl border border-zinc-200 bg-zinc-100/80 px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-peach-deep/60 focus:outline-none focus:ring-0 dark:border-white/10 dark:bg-[#1A1E29] dark:text-zinc-100 dark:placeholder:text-zinc-500;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold text-zinc-600 dark:text-zinc-300;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-amber-300/90 dark:text-zinc-950 dark:hover:bg-amber-200;
+  }
+  .btn-soft {
+    @apply btn bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-white/[0.07] dark:text-zinc-200 dark:hover:bg-white/[0.12];
+  }
+  .btn-ghost {
+    @apply btn text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/[0.06];
+  }
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/[0.07] dark:hover:text-white;
+  }
+  .section-title {
+    @apply text-base font-bold tracking-tight text-zinc-900 dark:text-white;
+  }
+  .muted {
+    @apply text-zinc-500 dark:text-zinc-400;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Thick striped bar from the prototype (Summary Today). */
+.striped-peach {
+  background: repeating-linear-gradient(-45deg, #f5be86, #f5be86 5px, #f8ca9b 5px, #f8ca9b 10px);
+}
+.dark .striped-peach {
+  background: repeating-linear-gradient(-45deg, #c9813f, #c9813f 5px, #b06f33 5px, #b06f33 10px);
+}
+
+/* Soft pastel mesh banners for task cards. */
+.mesh-0 {
+  background: radial-gradient(at 15% 20%, #d8f3dc 0px, transparent 55%), radial-gradient(at 85% 80%, #ffcad4 0px, transparent 55%), #f1f5f9;
+}
+.mesh-1 {
+  background: radial-gradient(at 20% 80%, #e0e7ff 0px, transparent 55%), radial-gradient(at 80% 20%, #f3e8ff 0px, transparent 55%), #f8fafc;
+}
+.mesh-2 {
+  background: radial-gradient(at 10% 30%, #fde68a 0px, transparent 55%), radial-gradient(at 90% 70%, #fed7aa 0px, transparent 55%), #fffbeb;
+}
+.mesh-3 {
+  background: radial-gradient(at 80% 30%, #cffafe 0px, transparent 55%), radial-gradient(at 15% 75%, #fce7f3 0px, transparent 55%), #f8fafc;
+}
+.dark .mesh-0 {
+  background: radial-gradient(at 15% 20%, rgba(16, 185, 129, 0.22) 0px, transparent 60%), radial-gradient(at 85% 80%, rgba(244, 63, 94, 0.18) 0px, transparent 60%), #1e222d;
+}
+.dark .mesh-1 {
+  background: radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.24) 0px, transparent 60%), radial-gradient(at 80% 20%, rgba(168, 85, 247, 0.18) 0px, transparent 60%), #1e222d;
+}
+.dark .mesh-2 {
+  background: radial-gradient(at 10% 30%, rgba(245, 158, 11, 0.22) 0px, transparent 60%), radial-gradient(at 90% 70%, rgba(234, 88, 12, 0.18) 0px, transparent 60%), #1e222d;
+}
+.dark .mesh-3 {
+  background: radial-gradient(at 80% 30%, rgba(14, 165, 233, 0.2) 0px, transparent 60%), radial-gradient(at 15% 75%, rgba(236, 72, 153, 0.16) 0px, transparent 60%), #1e222d;
+}
+
+/* Warm dusk banner for the Quick Stats card. */
+.sunset-header {
+  background: linear-gradient(135deg, #4f5d75 0%, #c98a6b 48%, #f4a261 80%, #2a2d34 100%);
+}
+.dark .sunset-header {
+  background: linear-gradient(135deg, #2b3243 0%, #7a5544 50%, #a56b3f 80%, #1a1d24 100%);
+}
+
+/*
+ * Solar Horizon tones. One radial gradient per tone; components stack the layers and fade
+ * between them with opacity, so a phase change never animates a colour or a blur.
+ */
+.solar-sky {
+  background: radial-gradient(closest-side, rgba(56, 189, 248, 0.16), rgba(56, 189, 248, 0.06) 45%, transparent);
+}
+.solar-teal {
+  background: radial-gradient(closest-side, rgba(45, 212, 191, 0.2), rgba(45, 212, 191, 0.08) 45%, transparent);
+}
+.solar-gold {
+  background: radial-gradient(closest-side, rgba(234, 179, 8, 0.3), rgba(234, 179, 8, 0.14) 45%, transparent);
+}
+.solar-radiant {
+  background: radial-gradient(closest-side, rgba(245, 158, 11, 0.36), rgba(245, 158, 11, 0.18) 45%, transparent);
+}
+.solar-recovery {
+  background: radial-gradient(closest-side, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.08) 45%, transparent);
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.35);
+  border-radius: 99px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

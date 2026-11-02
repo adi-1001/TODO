@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#0B0D12</color>
+    <!-- Behind the WebView and on the launch screen, so a cold start never flashes white. -->
+    <color name="study_background">#0B0D12</color>
+</resources>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0B0D12" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>APEX // PC & Phone Synced Exam Comeback OS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .striped-peach {
+      background: repeating-linear-gradient(
+        -45deg,
+        #f5be86,
+        #f5be86 5px,
+        #f8ca9b 5px,
+        #f8ca9b 10px
+      );
+    }
+    .dark .striped-peach {
+      background: repeating-linear-gradient(
+        -45deg,
+        #ea580c,
+        #ea580c 5px,
+        #c2410c 5px,
+        #c2410c 10px
+      );
+    }
+    .mesh-1 {
+      background: radial-gradient(at 15% 20%, #d8f3dc 0px, transparent 55%),
+                  radial-gradient(at 85% 80%, #ffcad4 0px, transparent 55%),
+                  #f1f5f9;
+    }
+    .mesh-2 {
+      background: radial-gradient(at 20% 80%, #e0e7ff 0px, transparent 55%),
+                  radial-gradient(at 80% 20%, #f3e8ff 0px, transparent 55%),
+                  #f8fafc;
+    }
+    .mesh-3 {
+      background: radial-gradient(at 10% 30%, #fde68a 0px, transparent 55%),
+                  radial-gradient(at 90% 70%, #fed7aa 0px, transparent 55%),
+                  #fffbeb;
+    }
+    .dark .mesh-1 {
+      background: radial-gradient(at 15% 20%, rgba(16, 185, 129, 0.28) 0px, transparent 60%),
+                  radial-gradient(at 85% 80%, rgba(244, 63, 94, 0.25) 0px, transparent 60%),
+                  #1e222d;
+    }
+    .dark .mesh-2 {
+      background: radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.28) 0px, transparent 60%),
+                  radial-gradient(at 80% 20%, rgba(168, 85, 247, 0.25) 0px, transparent 60%),
+                  #1e222d;
+    }
+    .dark .mesh-3 {
+      background: radial-gradient(at 10% 30%, rgba(245, 158, 11, 0.28) 0px, transparent 60%),
+                  radial-gradient(at 90% 70%, rgba(234, 88, 12, 0.25) 0px, transparent 60%),
+                  #1e222d;
+    }
+    .sunset-header {
+      background: linear-gradient(135deg, #4f5d75 0%, #c98a6b 48%, #f4a261 80%, #2a2d34 100%);
+    }
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.35); border-radius: 99px; }
+  </style>
+</head>
+<body class="bg-[#F5F5F7] dark:bg-[#0B0D12] text-zinc-900 dark:text-zinc-100 min-h-screen p-2 sm:p-4 lg:p-6 pb-20 lg:pb-6">
+
+  <!-- OUTER SHELL -->
+  <div class="max-w-[1480px] mx-auto flex flex-col lg:flex-row gap-5 min-h-[92vh]">
+
+    <!-- ================================================================= -->
+    <!-- LEFT SIDEBAR NAVIGATION (DESKTOP PC VIEW)                         -->
+    <!-- ================================================================= -->
+    <aside class="hidden lg:flex w-60 shrink-0 flex-col justify-between py-2 px-1 select-none">
+      <div class="space-y-5">
+        <!-- Brand Card -->
+        <div class="bg-white dark:bg-[#14171F] border border-zinc-200/80 dark:border-white/10 rounded-2xl p-3 flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-zinc-900 dark:bg-orange-500 text-white dark:text-black flex items-center justify-center font-extrabold text-sm">
+              ⚡
+            </div>
+            <div>
+              <div class="text-sm font-bold leading-none">APEX Focus</div>
+              <div class="text-[11px] text-zinc-400 mt-0.5">PC & Phone OS</div>
+            </div>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">PWA</span>
+        </div>
+
+        <!-- NEW: REAL-TIME PC <-> PHONE SYNC ID CARD -->
+        <div onclick="openModal('syncModal')" class="cursor-pointer bg-white dark:bg-[#14171F] hover:border-orange-500/50 border border-zinc-200/80 dark:border-white/10 rounded-2xl p-3 space-y-1.5 shadow-sm transition">
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="font-bold text-zinc-700 dark:text-zinc-200 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Sync ID
+            </span>
+            <span class="text-orange-500 font-bold">Pair ↗</span>
+          </div>
+          <div class="flex items-center justify-between bg-zinc-100 dark:bg-[#1D212C] px-2.5 py-1.5 rounded-xl font-mono text-xs font-bold text-zinc-800 dark:text-orange-300">
+            <span id="sidebarSyncId">apex-student-01</span>
+            <span class="text-[10px] text-zinc-400">PC+Phone</span>
+          </div>
+        </div>
+
+        <!-- MAIN Navigation -->
+        <div class="space-y-1">
+          <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1.5">Main</div>
+          <a href="#" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-zinc-200/75 dark:bg-white/10 text-zinc-900 dark:text-white font-semibold text-xs transition">
+            <span>⊞</span> Dashboard
+          </a>
+          <button onclick="openModal('razorModal')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span class="flex items-center gap-3"><span>✂️</span> 5-Question Razor</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-orange-500/15 text-orange-600 dark:text-orange-400 font-bold">Filter</span>
+          </button>
+          <button onclick="openModal('reflectionModal')" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span class="flex items-center gap-3"><span>🌙</span> Nightly Reset</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-600 dark:text-sky-400 font-bold">0-Guilt</span>
+          </button>
+          <button onclick="toggleFreeze()" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span class="flex items-center gap-3"><span>🔥</span> Streak Status</span>
+            <span id="sidebarStreak" class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">14d Active</span>
+          </button>
+        </div>
+
+        <!-- STUDY TOOLS -->
+        <div class="space-y-1">
+          <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1.5">Focus Tools</div>
+          <button onclick="toggleFloatingMiniTimer()" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span class="flex items-center gap-3"><span>⧉</span> Mini Float Timer</span>
+            <span class="text-[10px] text-orange-500 font-bold">PC PiP</span>
+          </button>
+          <button onclick="playMindfulnessChime()" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span class="flex items-center gap-3"><span>🔔</span> 8m Daydream Ping</span>
+            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">ON</span>
+          </button>
+          <button onclick="openModal('badgeModal')" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/40 dark:hover:bg-white/5 font-medium text-xs transition">
+            <span>🏅</span> Comeback Badges
+          </button>
+        </div>
+
+        <!-- DARK MODE SWITCH -->
+        <div class="space-y-1 pt-2 border-t border-zinc-200/70 dark:border-white/10">
+          <div class="flex items-center justify-between px-3.5 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 font-medium text-xs">
+            <span class="flex items-center gap-3"><span>🌙</span> Dark Mode</span>
+            <button onclick="toggleTheme()" class="w-10 h-5 rounded-full bg-zinc-300 dark:bg-orange-500 relative transition-colors p-0.5">
+              <span class="block w-4 h-4 rounded-full bg-white shadow transform transition-transform translate-x-0 dark:translate-x-5"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom User Profile Card -->
+      <div class="mt-4 bg-white dark:bg-[#14171F] border border-zinc-200/80 dark:border-white/10 rounded-2xl p-3 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-orange-300 flex items-center justify-center text-black font-bold text-xs">
+            S
+          </div>
+          <div>
+            <div class="text-xs font-bold">Student Mode</div>
+            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">🛡️ Gold Tier (88%)</div>
+          </div>
+        </div>
+        <button onclick="resetAllDemoData()" title="Reset Demo Data" class="text-[10px] text-zinc-400 hover:text-rose-500">↺</button>
+      </div>
+    </aside>
+
+    <!-- ================================================================= -->
+    <!-- MAIN WHITE / DARK WORKSPACE CARD                                  -->
+    <!-- ================================================================= -->
+    <main class="flex-1 bg-white dark:bg-[#12151C] border border-zinc-200/80 dark:border-white/10 rounded-[24px] lg:rounded-[28px] p-4 sm:p-6 lg:p-7 shadow-sm flex flex-col justify-between space-y-6">
+
+      <!-- 1. TOP HEADER BAR -->
+      <header class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <!-- Mobile-only Logo & Theme button -->
+          <div class="flex lg:hidden items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-zinc-900 dark:bg-orange-500 text-white dark:text-black flex items-center justify-center font-extrabold text-sm">⚡</div>
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">
+              <span id="currentHeaderTask">Thursday Exam Comeback</span>
+            </h1>
+            <span class="text-[11px] text-zinc-400 sm:hidden block" id="mobileSyncBadge">🟢 Synced: apex-student-01</span>
+          </div>
+          <span class="hidden sm:inline-block text-xs px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 font-semibold">
+            70% Current • 30% Backlog
+          </span>
+        </div>
+
+        <!-- Right Timer Pill + Controls -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- Interactive Timer Pill -->
+          <div class="flex items-center gap-2 bg-zinc-50 dark:bg-[#1A1E29] border border-zinc-200/90 dark:border-white/10 rounded-full px-3 py-1.5 shadow-inner">
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-orange-500 border-t-transparent animate-spin" id="timerSpinner" style="animation-play-state: paused;"></span>
+            <span id="headerTimer" class="text-xs font-extrabold tabular-nums tracking-tight">03:00</span>
+            <button onclick="toggleTimer()" id="headerStartBtn" class="text-[11px] px-2.5 py-0.5 rounded-full bg-orange-500 hover:bg-orange-400 text-white dark:text-black font-bold transition">
+              🔥 3m Ignition
+            </button>
+            <select id="gearSelect" onchange="changeGear(this.value)" class="bg-transparent text-[11px] text-zinc-500 dark:text-zinc-400 font-semibold focus:outline-none cursor-pointer">
+              <option value="3">3m Spark</option>
+              <option value="15">G1: 15m</option>
+              <option value="25">G2: 25m</option>
+              <option value="50">G3: 50m</option>
+            </select>
+            <button onclick="toggleFloatingMiniTimer()" title="Pop out Floating Mini-Timer" class="text-xs text-zinc-400 hover:text-orange-500 px-1">⧉</button>
+          </div>
+
+          <!-- Day / Week / Month Pills (Hidden on small mobile for space) -->
+          <div class="hidden md:flex items-center bg-zinc-100 dark:bg-[#1A1E29] p-1 rounded-xl border border-zinc-200/60 dark:border-white/5 text-xs">
+            <button class="px-3 py-1 rounded-lg bg-white dark:bg-[#262B38] shadow-sm font-semibold text-zinc-900 dark:text-white">Day</button>
+            <button class="px-3 py-1 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-800">Week</button>
+          </div>
+
+          <button onclick="toggleTheme()" class="lg:hidden p-2 rounded-xl border border-zinc-200 dark:border-white/10 text-xs">🌙</button>
+        </div>
+      </header>
+
+      <!-- 2. UPPER ROW: DAILY FOCUS TIMELINE (LEFT) + QUICK STATS SUNSET CARD (RIGHT) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+        <!-- Top-Left: Daily Focus & Daydream Timeline (9:00 to 17:00) -->
+        <div class="lg:col-span-8 bg-zinc-50/70 dark:bg-[#171B24] border border-zinc-200/70 dark:border-white/5 rounded-2xl p-4 flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2 text-xs">
+            <span class="font-semibold text-zinc-500 dark:text-zinc-400">Today's Deep Work & Anti-Daydream Timeline</span>
+            <div class="flex items-center gap-3 text-[11px]">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-[#F5BE86] dark:bg-orange-500"></span> Deep Focus</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-zinc-200 dark:bg-zinc-700"></span> Class / Break</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">⚡ Start Delay: 1m 12s</span>
+            </div>
+          </div>
+
+          <!-- Timeline Bars Visual -->
+          <div class="relative h-28 sm:h-32 w-full bg-white dark:bg-[#12151C] rounded-xl border border-zinc-200/60 dark:border-white/5 overflow-hidden flex items-stretch px-2 py-1.5 gap-1.5">
+            <div class="w-[22%] bg-[#F8CBA0]/75 dark:bg-orange-500/40 rounded-lg flex items-end p-2">
+              <span class="text-[10px] font-bold text-amber-900 dark:text-orange-200 truncate">Electrostatics PYQs</span>
+            </div>
+            <div class="w-[14%] bg-zinc-100 dark:bg-white/5 rounded-lg flex items-end p-2">
+              <span class="text-[10px] text-zinc-400 truncate">Class</span>
+            </div>
+            <div class="w-[16%] bg-[#F8CBA0]/85 dark:bg-orange-500/50 rounded-lg flex items-end p-2">
+              <span class="text-[10px] font-bold text-amber-900 dark:text-orange-200 truncate">Backlog 1-Shot</span>
+            </div>
+            <div class="w-[20%] bg-zinc-100 dark:bg-white/5 rounded-lg flex items-end p-2">
+              <span class="text-[10px] text-zinc-400 truncate">Rest</span>
+            </div>
+            <div class="w-[18%] bg-[#F5BE86] dark:bg-orange-500/75 rounded-lg flex items-end p-2 border border-orange-400/40">
+              <span class="text-[10px] font-bold text-amber-950 dark:text-white truncate">🔥 Active Block</span>
+            </div>
+            <div class="flex-1 bg-zinc-100 dark:bg-white/5 rounded-lg"></div>
+          </div>
+
+          <!-- Bottom Track & Hour Labels -->
+          <div class="mt-2 space-y-1.5">
+            <div class="flex gap-1 h-1.5 w-full">
+              <div class="w-[22%] rounded-full bg-[#F5BE86] dark:bg-orange-500"></div>
+              <div class="w-[14%] rounded-full bg-rose-200 dark:bg-rose-500/40"></div>
+              <div class="w-[16%] rounded-full bg-[#F5BE86] dark:bg-orange-500"></div>
+              <div class="w-[20%] rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
+              <div class="w-[18%] rounded-full bg-[#F5BE86] dark:bg-orange-500"></div>
+              <div class="flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700"></div>
+            </div>
+            <div class="flex justify-between text-[10px] sm:text-[11px] text-zinc-400 font-medium px-1">
+              <span>9:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-Right: Quick Stats Sunset Card -->
+        <div class="lg:col-span-4 bg-zinc-50/70 dark:bg-[#171B24] border border-zinc-200/70 dark:border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between">
+          <div class="sunset-header p-4 pb-10 relative">
+            <div class="flex items-center justify-between">
+              <span class="text-white font-bold text-sm drop-shadow">Quick Stats</span>
+              <button onclick="openModal('reflectionModal')" class="text-[10px] px-2.5 py-0.5 rounded-full bg-black/35 text-white backdrop-blur-sm hover:bg-black/55 transition">
+                0-Guilt Reset ↺
+              </button>
+            </div>
+          </div>
+
+          <div class="px-4 -mt-7 grid grid-cols-2 gap-3 relative z-10">
+            <div class="bg-white/95 dark:bg-[#1E222D]/95 backdrop-blur border border-zinc-200/80 dark:border-white/10 rounded-xl p-3 shadow-sm">
+              <div class="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium">Backlog Left</div>
+              <div id="statBacklogCount" class="text-2xl font-extrabold text-zinc-900 dark:text-white mt-0.5">2</div>
+            </div>
+            <div class="bg-white/95 dark:bg-[#1E222D]/95 backdrop-blur border border-zinc-200/80 dark:border-white/10 rounded-xl p-3 shadow-sm">
+              <div class="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium">Solved PYQs</div>
+              <div id="statPyqCount" class="text-2xl font-extrabold text-zinc-900 dark:text-white mt-0.5">142</div>
+            </div>
+          </div>
+
+          <div class="p-4 pt-3">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-zinc-800 dark:text-zinc-200">
+              <span>✨</span> Comeback Strategy Insight
+            </div>
+            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
+              Use <strong>⚡ Mercy Mode (1-Shot + 15 PYQs)</strong> on backlog chapters so you keep 70% of today focused on current classes.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. LOWER ROW: SUMMARY TODAY & AUDIO DOCK (LEFT) + 70/30 KANBAN & THOUGHT LOG (RIGHT) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2 border-t border-zinc-200/70 dark:border-white/10">
+
+        <!-- Bottom-Left: Summary Today + Smart Study Audio Dock -->
+        <div class="lg:col-span-4 flex flex-col justify-between space-y-5 pr-0 lg:pr-3">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-base font-bold text-zinc-900 dark:text-white">Summary Today</h2>
+              <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">82% Active Recall</span>
+            </div>
+
+            <div class="text-xs text-zinc-500 dark:text-zinc-400">Deep Study Hours</div>
+            <div class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">5 hr 40 mins</div>
+
+            <div class="space-y-1">
+              <div class="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+                <div class="w-[82%] h-full bg-zinc-600 dark:bg-zinc-300 rounded-full"></div>
+              </div>
+              <div class="flex justify-between text-[11px] text-zinc-500 font-medium">
+                <span>82% Daily Goal</span>
+                <span>7 hr 0 min</span>
+              </div>
+            </div>
+
+            <!-- Striped / Segmented Pill Bar -->
+            <div class="flex items-center gap-2 h-7 pt-1">
+              <div class="w-[62%] h-full rounded-lg striped-peach"></div>
+              <div class="w-[26%] h-full rounded-lg bg-[#F5D0C5] dark:bg-rose-500/40"></div>
+              <div class="flex-1 h-full rounded-lg bg-[#D6C7BC] dark:bg-zinc-700"></div>
+            </div>
+
+            <div class="flex items-center gap-4 text-xs text-zinc-600 dark:text-zinc-400 pt-1">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-[#F5BE86] dark:bg-orange-500"></span> Current (70%)</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-[#F5D0C5] dark:bg-rose-400"></span> Backlog (30%)</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-[#D6C7BC] dark:bg-zinc-600"></span> Breaks</span>
+            </div>
+          </div>
+
+          <!-- Details & Smart Study Audio Dock -->
+          <div class="space-y-2.5 pt-2 border-t border-zinc-200/60 dark:border-white/10 text-xs">
+            <div class="font-bold text-zinc-500 dark:text-zinc-400">Subject Split & Focus Audio Dock</div>
+
+            <div class="flex items-center justify-between py-1">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold">⚡</div>
+                <div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Physics (Current)</div>
+                  <div class="text-[11px] text-zinc-400">Electrostatics PYQs</div>
+                </div>
+              </div>
+              <span class="text-zinc-500 font-medium">3 hr 10 mins</span>
+              <span class="px-2 py-0.5 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] font-semibold">70% Lane</span>
+            </div>
+
+            <div class="flex items-center justify-between py-1">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold">🎯</div>
+                <div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Thermodynamics</div>
+                  <div class="text-[11px] text-zinc-400">Mercy Mode (1-Shot)</div>
+                </div>
+              </div>
+              <span class="text-zinc-500 font-medium">1 hr 45 mins</span>
+              <span class="px-2 py-0.5 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[11px] font-semibold">Backlog</span>
+            </div>
+
+            <!-- Distraction-Free Study Audio Dock -->
+            <div class="p-2.5 rounded-2xl bg-zinc-100/90 dark:bg-[#1A1E29] border border-zinc-200/70 dark:border-white/5 space-y-2">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">🎧</div>
+                  <div>
+                    <div class="font-bold text-zinc-900 dark:text-white text-xs">Focus Audio (Auto-Ducks on 8m Ping)</div>
+                  </div>
+                </div>
+                <button onclick="toggleStudyAudio()" id="audioPlayBtn" class="px-3 py-1 rounded-lg bg-zinc-900 dark:bg-orange-500 text-white dark:text-black text-[11px] font-bold transition">
+                  ▶ Play
+                </button>
+              </div>
+              <select id="audioChannel" class="w-full bg-white dark:bg-[#12151C] text-[11px] text-zinc-700 dark:text-zinc-300 px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-white/10 focus:outline-none">
+                <option value="brown">🌊 40Hz + Deep Brown Noise (Best for Reading)</option>
+                <option value="drone">🎹 Warm Ambient Synth Drone (Best for Math/PYQs)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-Right: 3-Column Study Kanban + Thought Parking Lot Table -->
+        <div class="lg:col-span-8 flex flex-col justify-between space-y-6">
+
+          <!-- 3-Column Syllabus & Backlog Board -->
+          <div class="space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-base font-bold text-zinc-900 dark:text-white">Syllabus & Backlog Study Board</h2>
+              <div class="flex items-center gap-2 text-xs">
+                <button onclick="openModal('syncModal')" class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-bold">
+                  ☁️ Synced
+                </button>
+                <button onclick="openModal('razorModal')" class="px-3 py-1 rounded-full bg-orange-500/15 text-orange-600 dark:text-orange-400 font-bold hover:bg-orange-500/25 transition">
+                  + Filter Task (5-Q Razor)
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="kanbanBoard">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Bottom Table: Thought Parking Lot -->
+          <div class="pt-3 border-t border-zinc-200/70 dark:border-white/10 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-sm font-bold text-zinc-900 dark:text-white">Thought Parking Lot (Anti-Daydream Catch Log)</h3>
+              <form onsubmit="parkThought(event)" class="flex items-center gap-2 flex-1 max-w-md">
+                <input id="thoughtInput" type="text" placeholder="Mind wandering? Dump the thought here in 2s & stay focused..." class="w-full bg-zinc-100 dark:bg-[#1A1E29] text-xs px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-white/10 focus:outline-none focus:border-orange-500" />
+                <button type="submit" class="px-3 py-1.5 rounded-xl bg-zinc-900 dark:bg-orange-500 text-white dark:text-black text-xs font-bold shrink-0">
+                  Park It
+                </button>
+              </form>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="text-zinc-400 border-b border-zinc-100 dark:border-white/5">
+                    <th class="pb-2 font-medium">Mode / Trigger ⇅</th>
+                    <th class="pb-2 font-medium">Parked Thought ⇅</th>
+                    <th class="pb-2 font-medium">Status ⇅</th>
+                    <th class="pb-2 font-medium text-right">Time ⇅</th>
+                  </tr>
+                </thead>
+                <tbody id="thoughtTableBody" class="divide-y divide-zinc-100 dark:divide-white/5">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MOBILE BOTTOM NAVIGATION BAR (AUTOMATICALLY SHOWS ON PHONES)      -->
+  <!-- ================================================================= -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-[#14171F]/95 backdrop-blur-md border-t border-zinc-200 dark:border-white/10 px-4 py-2 flex items-center justify-around z-40 text-[11px] font-semibold">
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center gap-0.5 text-orange-500">
+      <span class="text-base">⊞</span><span>Studio</span>
+    </button>
+    <button onclick="openModal('razorModal')" class="flex flex-col items-center gap-0.5 text-zinc-500 dark:text-zinc-400">
+      <span class="text-base">✂️</span><span>5-Q Razor</span>
+    </button>
+    <button onclick="focusThoughtInput()" class="flex flex-col items-center gap-0.5 text-zinc-500 dark:text-zinc-400">
+      <span class="text-base">🧠</span><span>Park Thought</span>
+    </button>
+    <button onclick="openModal('reflectionModal')" class="flex flex-col items-center gap-0.5 text-zinc-500 dark:text-zinc-400">
+      <span class="text-base">🌙</span><span>0-Guilt Reset</span>
+    </button>
+    <button onclick="openModal('syncModal')" class="flex flex-col items-center gap-0.5 text-emerald-500">
+      <span class="text-base">☁️</span><span>Sync ID</span>
+    </button>
+  </nav>
+
+  <!-- ================================================================= -->
+  <!-- FLOATING ALWAYS-ON-TOP MINI TIMER WIDGET (PC PiP PREVIEW)         -->
+  <!-- ================================================================= -->
+  <div id="floatingMiniTimer" class="fixed bottom-6 right-6 z-50 hidden w-72 bg-zinc-900 text-white border border-white/15 rounded-2xl p-4 shadow-2xl space-y-3">
+    <div class="flex items-center justify-between">
+      <span class="text-[10px] font-bold uppercase tracking-widest text-orange-400 flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span> Mini Focus Overlay
+      </span>
+      <button onclick="toggleFloatingMiniTimer()" class="text-zinc-400 hover:text-white text-xs">✕</button>
+    </div>
+    <div class="flex items-center justify-between">
+      <div>
+        <div id="miniTimerClock" class="text-3xl font-extrabold tabular-nums">03:00</div>
+        <div class="text-[11px] text-zinc-400 truncate w-40" id="miniTimerTask">Electrostatics PYQs</div>
+      </div>
+      <button onclick="toggleTimer()" id="miniStartBtn" class="px-3.5 py-2 rounded-xl bg-orange-500 text-black font-extrabold text-xs">
+        ▶ Start
+      </button>
+    </div>
+    <form onsubmit="parkThoughtFromMini(event)" class="flex gap-1.5">
+      <input id="miniThoughtInput" type="text" placeholder="Quick dump thought..." class="w-full bg-zinc-800 text-[11px] text-white px-2.5 py-1.5 rounded-lg border border-white/10 focus:outline-none" />
+      <button type="submit" class="px-2.5 py-1.5 rounded-lg bg-zinc-700 hover:bg-orange-500 hover:text-black text-[11px] font-bold">Park</button>
+    </form>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 0: PC <-> PHONE FREE CLOUD SYNC ID PAIRING                  -->
+  <!-- ================================================================= -->
+  <div id="syncModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-[#161922] border border-zinc-200 dark:border-white/10 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-500">Real-Time Multi-Device Sync</span>
+          <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">PC & Phone Same-ID Sync</h3>
+        </div>
+        <button onclick="closeModal('syncModal')" class="text-zinc-400 hover:text-zinc-700 dark:hover:text-white">✕</button>
+      </div>
+
+      <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+        Enter the exact same <strong>Sync ID</strong> on both your PC app and your Phone app. Your 70/30 tasks, Mercy Mode compressions, streaks, and parked thoughts stay mirrored automatically.
+      </p>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="font-bold block mb-1">Your Shared Sync ID (Passcode):</label>
+          <div class="flex gap-2">
+            <input id="syncIdInput" type="text" value="apex-student-01" class="w-full bg-zinc-100 dark:bg-[#1E222D] font-mono font-bold text-sm rounded-xl px-3.5 py-2 border border-zinc-200 dark:border-white/10 focus:outline-none focus:border-emerald-500" />
+            <button onclick="saveSyncId()" class="px-4 py-2 rounded-xl bg-emerald-500 text-black font-extrabold shrink-0">Connect ID</button>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-zinc-50 dark:bg-[#12151C] border border-zinc-200/70 dark:border-white/5 flex items-center justify-between">
+          <div>
+            <div class="font-bold text-zinc-800 dark:text-zinc-200">Instant State Backup / Transfer</div>
+            <div class="text-[11px] text-zinc-400">Copy or restore JSON snapshot across devices</div>
+          </div>
+          <div class="flex gap-1.5">
+            <button onclick="exportStateJson()" class="px-2.5 py-1.5 rounded-lg bg-zinc-200 dark:bg-white/10 font-bold text-[11px]">Copy JSON</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button onclick="closeModal('syncModal')" class="px-4 py-2 rounded-xl bg-zinc-200 dark:bg-white/10 text-xs font-bold">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 1: 5-QUESTION EXAM RAZOR                                    -->
+  <!-- ================================================================= -->
+  <div id="razorModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-[#161922] border border-zinc-200 dark:border-white/10 rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-orange-500">Eliminate Busywork</span>
+          <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">The 5-Question Exam Razor</h3>
+        </div>
+        <button onclick="closeModal('razorModal')" class="text-zinc-400 hover:text-zinc-700 dark:hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <input id="newTaskTitle" type="text" placeholder="Chapter / Task (e.g., Rotational Motion - 15 Moment of Inertia PYQs)" class="w-full bg-zinc-100 dark:bg-[#1E222D] rounded-xl px-3.5 py-2.5 border border-zinc-200 dark:border-white/10 focus:outline-none" />
+        <div class="grid grid-cols-2 gap-2">
+          <select id="newTaskCol" class="bg-zinc-100 dark:bg-[#1E222D] rounded-xl px-3 py-2.5 border border-zinc-200 dark:border-white/10">
+            <option value="current">🛡️ Current Syllabus (70%)</option>
+            <option value="backlog">🎯 Backlog Sniper (30%)</option>
+          </select>
+          <select id="newTaskTag" class="bg-zinc-100 dark:bg-[#1E222D] rounded-xl px-3 py-2.5 border border-zinc-200 dark:border-white/10">
+            <option value="Urgent">🔴 Prerequisite Blocker</option>
+            <option value="High-Yield">🟠 High-Yield Marks</option>
+            <option value="Normal">🔵 Standard Practice</option>
+          </select>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#12151C] border border-zinc-200/70 dark:border-white/5 space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="rz-chk mt-0.5 accent-orange-500" checked onchange="calcRazor()"/><span><strong>1. 48-Hour Exam Test:</strong> Directly gains marks on the real paper.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="rz-chk mt-0.5 accent-orange-500" checked onchange="calcRazor()"/><span><strong>2. Active Recall Test:</strong> Problem solving / testing (not passive watching).</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="rz-chk mt-0.5 accent-orange-500" checked onchange="calcRazor()"/><span><strong>3. Prerequisite Test:</strong> Needed to understand current ongoing classes.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="rz-chk mt-0.5 accent-orange-500" onchange="calcRazor()"/><span><strong>4. 80/20 Mercy Ready:</strong> Can be compressed via 1-Shot + PYQs.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="checkbox" class="rz-chk mt-0.5 accent-orange-500" onchange="calcRazor()"/><span><strong>5. Single Domino:</strong> Finishing this alone makes today a comeback win.</span></label>
+        </div>
+
+        <div id="razorStatus" class="p-3 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-bold flex justify-between">
+          <span>Verdict: High-Yield Must-Win (3/5)</span><span>✓ Approved</span>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <button onclick="closeModal('razorModal')" class="px-4 py-2 rounded-xl bg-zinc-200 dark:bg-white/10 text-xs font-bold">Cancel</button>
+        <button onclick="addKanbanTask()" class="px-5 py-2 rounded-xl bg-zinc-900 dark:bg-orange-500 text-white dark:text-black text-xs font-bold">Add to Board</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 2: 60-SECOND NIGHTLY REFLECTION & ZERO-GUILT RESET          -->
+  <!-- ================================================================= -->
+  <div id="reflectionModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-[#161922] border border-zinc-200 dark:border-white/10 rounded-3xl w-full max-w-lg p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-sky-500">End-of-Day Reset</span>
+          <h3 class="text-lg font-extrabold text-zinc-900 dark:text-white">60-Second Nightly Reflection</h3>
+        </div>
+        <button onclick="closeModal('reflectionModal')" class="text-zinc-400 hover:text-zinc-700 dark:hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="font-bold block mb-1">1. What triggered delay or daydreaming today?</label>
+          <select class="w-full bg-zinc-100 dark:bg-[#1E222D] rounded-xl px-3 py-2 border border-zinc-200 dark:border-white/10">
+            <option>Locked in fast using 3-Minute Ignition ⚡</option>
+            <option>Felt overwhelmed by backlog size</option>
+            <option>Zoned out while reading passive theory</option>
+            <option>Phone / YouTube distraction</option>
+          </select>
+        </div>
+        <div class="p-3 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-800 dark:text-sky-200">
+          <label class="flex items-center gap-2 cursor-pointer font-semibold">
+            <input type="checkbox" checked class="accent-sky-500" />
+            <span>Zero-Guilt Bankruptcy Reset: Clear all overdue badges & start fresh tomorrow.</span>
+          </label>
+        </div>
+        <div>
+          <label class="font-bold block mb-1">2. Lock Tomorrow Morning's "3-Minute Ignition" Task:</label>
+          <input id="tomorrowTaskInput" type="text" value="Electrostatics: Capacitor Networks (12 PYQs)" class="w-full bg-zinc-100 dark:bg-[#1E222D] rounded-xl px-3 py-2 border border-zinc-200 dark:border-white/10" />
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <button onclick="closeModal('reflectionModal')" class="px-4 py-2 rounded-xl bg-zinc-200 dark:bg-white/10 text-xs font-bold">Close</button>
+        <button onclick="lockTomorrowIgnition()" class="px-5 py-2 rounded-xl bg-sky-500 text-white text-xs font-bold">Reset Guilt & Lock Tomorrow</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL 3: COMEBACK BADGES                                          -->
+  <!-- ================================================================= -->
+  <div id="badgeModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-[#161922] border border-zinc-200 dark:border-white/10 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-extrabold">Earned Comeback Badges</h3>
+        <button onclick="closeModal('badgeModal')" class="text-zinc-400">✕</button>
+      </div>
+      <div class="space-y-2 text-xs">
+        <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 font-semibold">🔥 <strong>Phoenix Comeback:</strong> Studied 3h after missing 2 days without quitting.</div>
+        <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 font-semibold">⚡ <strong>Zero-Hesitation:</strong> Started 3m Ignition within 2 mins of opening app.</div>
+        <div class="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 font-semibold">🎯 <strong>Backlog Butcher:</strong> Compressed & solved PYQs for 2 backlog chapters.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION SCRIPT WITH PERSISTENCE & CROSS-TAB SYNC -->
+  <script>
+    const STORAGE_KEY = 'apex_comeback_os_state_v1';
+    const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('apex_sync_channel') : null;
+
+    const defaultState = {
+      theme: 'light',
+      syncId: 'apex-student-01',
+      pyqSolved: 142,
+      frozen: false,
+      activeTaskTitle: 'Thursday Exam Comeback',
+      boardTasks: [
+        {
+          id: 1,
+          col: 'current',
+          title: 'Gauss Law & Electric Flux PYQs',
+          desc: 'Solve 15 past questions actively before tomorrow lecture.',
+          date: 'Today • Gear 2 (25m)',
+          tag: 'Urgent',
+          mesh: 'mesh-1',
+          compressed: false
+        },
+        {
+          id: 2,
+          col: 'current',
+          title: 'Chemical Kinetics Rate Laws',
+          desc: 'Active derivation recall + 10 numericals.',
+          date: 'Today • Gear 1 (15m)',
+          tag: 'Normal',
+          mesh: 'mesh-2',
+          compressed: false
+        },
+        {
+          id: 3,
+          col: 'backlog',
+          title: 'Rotational Motion (Backlog)',
+          desc: '12 Lectures pending -> Click Mercy Mode to compress into 1-Shot + PYQs.',
+          date: 'Backlog Blocker',
+          tag: 'Urgent',
+          mesh: 'mesh-3',
+          compressed: false
+        },
+        {
+          id: 4,
+          col: 'backlog',
+          title: 'Thermodynamics & KTG',
+          desc: '⚡ Mercy Mode Active: 45m Summary + Formula Sheet + 15 PYQs.',
+          date: 'Compressed 80/20',
+          tag: 'High-Yield',
+          mesh: 'mesh-2',
+          compressed: true
+        },
+        {
+          id: 5,
+          col: 'done',
+          title: 'Vectors & Basic Calculus',
+          desc: 'Prerequisite cleared via 20 Past Exam Questions.',
+          date: 'Completed',
+          tag: 'Mastered',
+          mesh: 'mesh-1',
+          compressed: true
+        }
+      ],
+      thoughts: [
+        { mode: '🔥 3m Ignition', text: 'Check exam registration dates tonight (Parked in 2s)', status: 'Focused', time: '10:14 AM' },
+        { mode: '🔔 8m Ping Caught', text: 'Zoned out thinking about backlog size -> Snapped back to Q4', status: 'Refocused', time: '11:40 AM' }
+      ]
+    };
+
+    let appState = loadState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : structuredClone(defaultState);
+      } catch (e) {
+        return structuredClone(defaultState);
+      }
+    }
+
+    function saveState(broadcast = true) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      if (broadcast && syncChannel) {
+        syncChannel.postMessage(appState);
+      }
+      renderAll();
+    }
+
+    if (syncChannel) {
+      syncChannel.onmessage = (event) => {
+        if (event.data && event.data.syncId === appState.syncId) {
+          appState = event.data;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+          renderAll();
+        }
+      };
+    }
+
+    function resetAllDemoData() {
+      appState = structuredClone(defaultState);
+      saveState();
+    }
+
+    // --- THEME ---
+    function toggleTheme() {
+      appState.theme = appState.theme === 'dark' ? 'light' : 'dark';
+      saveState();
+    }
+
+    // --- SYNC ID ---
+    function saveSyncId() {
+      const val = document.getElementById('syncIdInput').value.trim() || 'apex-student-01';
+      appState.syncId = val;
+      saveState();
+      closeModal('syncModal');
+      playMindfulnessChime();
+    }
+
+    function exportStateJson() {
+      navigator.clipboard.writeText(JSON.stringify(appState));
+      alert('Synced State JSON copied to clipboard!');
+    }
+
+    // --- RENDER UI ---
+    function renderAll() {
+      // Theme
+      if (appState.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Sync ID & Header
+      document.getElementById('sidebarSyncId').innerText = appState.syncId;
+      document.getElementById('mobileSyncBadge').innerText = `🟢 Synced: ${appState.syncId}`;
+      document.getElementById('syncIdInput').value = appState.syncId;
+      document.getElementById('currentHeaderTask').innerText = appState.activeTaskTitle;
+      document.getElementById('miniTimerTask').innerText = appState.activeTaskTitle;
+      document.getElementById('statPyqCount').innerText = appState.pyqSolved;
+
+      // Streak Freeze
+      const streakEl = document.getElementById('sidebarStreak');
+      streakEl.innerText = appState.frozen ? '❄️ 14d Frozen' : '14d Active';
+      streakEl.className = appState.frozen ? 'text-[11px] font-bold text-sky-500' : 'text-[11px] font-bold text-emerald-600 dark:text-emerald-400';
+
+      renderKanban();
+      renderThoughts();
+    }
+
+    function renderKanban() {
+      const columns = [
+        { key: 'current', label: 'Current Syllabus (70%)', dot: 'bg-rose-500' },
+        { key: 'backlog', label: 'Backlog Sniper (30%)', dot: 'bg-amber-400' },
+        { key: 'done', label: 'Mastered (PYQs Done)', dot: 'bg-emerald-500' }
+      ];
+
+      const container = document.getElementById('kanbanBoard');
+      container.innerHTML = columns.map(col => {
+        const items = appState.boardTasks.filter(t => t.col === col.key);
+        return `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between px-3 py-1.5 rounded-full bg-zinc-100/90 dark:bg-[#1A1E29] border border-zinc-200/60 dark:border-white/5 text-xs">
+              <span class="flex items-center gap-2 font-bold text-zinc-800 dark:text-zinc-200">
+                <span class="w-2 h-2 rounded-full ${col.dot}"></span> ${col.label}
+              </span>
+              <button onclick="openModal('razorModal')" class="text-zinc-400 hover:text-zinc-800 dark:hover:text-white font-bold">+</button>
+            </div>
+
+            <div class="space-y-3">
+              ${items.map(item => {
+                const tagColors = {
+                  'Urgent': 'bg-rose-500/10 text-rose-600 dark:text-rose-400',
+                  'High-Yield': 'bg-amber-500/15 text-amber-700 dark:text-amber-300',
+                  'Normal': 'bg-sky-500/10 text-sky-600 dark:text-sky-400',
+                  'Mastered': 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                }[item.tag] || 'bg-zinc-200 text-zinc-700';
+
+                const mercyBtn = (item.col === 'backlog' && !item.compressed)
+                  ? `<button onclick="compressCard(${item.id})" class="mt-2 w-full py-1.5 rounded-lg bg-orange-500/15 hover:bg-orange-500 hover:text-white text-orange-600 dark:text-orange-400 font-bold text-[11px] transition">⚡ Compress (Mercy Mode)</button>`
+                  : '';
+
+                const moveBtn = (item.col !== 'done')
+                  ? `<button onclick="completeCard(${item.id})" class="text-[10px] text-zinc-400 hover:text-emerald-500 font-bold">✓ Done</button>`
+                  : '';
+
+                return `
+                  <div class="bg-zinc-50/80 dark:bg-[#171B24] border border-zinc-200/80 dark:border-white/5 rounded-2xl p-3 shadow-sm hover:shadow-md transition">
+                    <div class="h-14 w-full rounded-xl ${item.mesh} mb-2.5 flex items-center justify-between px-3">
+                      <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 bg-white/75 dark:bg-black/40 backdrop-blur px-2 py-0.5 rounded-md">${item.date}</span>
+                      ${moveBtn}
+                    </div>
+                    <div class="font-bold text-xs text-zinc-900 dark:text-white">${item.title}</div>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1 leading-snug">${item.desc}</p>
+                    ${mercyBtn}
+                    <div class="flex items-center justify-between mt-3 pt-2 border-t border-zinc-200/50 dark:border-white/5">
+                      <button onclick="startTaskTimer('${item.title.replace(/'/g, "")}')" class="text-[11px] font-bold text-zinc-700 dark:text-zinc-300 hover:text-orange-500">▶ Focus</button>
+                      <span class="text-[10px] px-2 py-0.5 rounded-md font-bold ${tagColors}">${item.tag}</span>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('statBacklogCount').innerHTML = `${appState.boardTasks.filter(t => t.col === 'backlog').length} <span class="text-xs font-normal text-orange-500">Mercy</span>`;
+    }
+
+    function compressCard(id) {
+      const card = appState.boardTasks.find(t => t.id === id);
+      if (card) {
+        card.compressed = true;
+        card.desc = "⚡ Mercy Mode: 45m 1-Shot Summary + Formula Sheet + 15 Past Exam Qs.";
+        card.date = "Compressed 80/20";
+        card.tag = "High-Yield";
+        playMindfulnessChime();
+        saveState();
+      }
+    }
+
+    function completeCard(id) {
+      const card = appState.boardTasks.find(t => t.id === id);
+      if (card) {
+        card.col = 'done';
+        card.tag = 'Mastered';
+        appState.pyqSolved += 15;
+        playMindfulnessChime();
+        saveState();
+      }
+    }
+
+    function renderThoughts() {
+      const tbody = document.getElementById('thoughtTableBody');
+      tbody.innerHTML = appState.thoughts.map(t => `
+        <tr class="text-zinc-700 dark:text-zinc-300">
+          <td class="py-2.5 font-semibold">${t.mode}</td>
+          <td class="py-2.5 text-zinc-500 dark:text-zinc-400">${t.text}</td>
+          <td class="py-2.5"><span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold text-[11px]">${t.status}</span></td>
+          <td class="py-2.5 text-right text-zinc-400 font-medium">${t.time}</td>
+        </tr>
+      `).join('');
+    }
+
+    function parkThought(e) {
+      e.preventDefault();
+      const input = document.getElementById('thoughtInput');
+      if (!input.value.trim()) return;
+      appState.thoughts.unshift({
+        mode: '🧠 Parked Thought',
+        text: input.value.trim(),
+        status: 'Focused',
+        time: 'Just now'
+      });
+      input.value = '';
+      saveState();
+    }
+
+    function parkThoughtFromMini(e) {
+      e.preventDefault();
+      const input = document.getElementById('miniThoughtInput');
+      if (!input.value.trim()) return;
+      appState.thoughts.unshift({
+        mode: '⧉ Mini Overlay Dump',
+        text: input.value.trim(),
+        status: 'Focused',
+        time: 'Just now'
+      });
+      input.value = '';
+      saveState();
+    }
+
+    function focusThoughtInput() {
+      const el = document.getElementById('thoughtInput');
+      el.scrollIntoView({ behavior: 'smooth' });
+      el.focus();
+    }
+
+    // --- TIMER & FLOATING OVERLAY ---
+    let remainingSec = 180;
+    let timerHandle = null;
+    let audioCtx = null;
+    let noiseNode = null;
+
+    function toggleFloatingMiniTimer() {
+      document.getElementById('floatingMiniTimer').classList.toggle('hidden');
+    }
+
+    function changeGear(mins) {
+      clearInterval(timerHandle);
+      timerHandle = null;
+      remainingSec = parseInt(mins) * 60;
+      updateHeaderTimer();
+      document.getElementById('headerStartBtn').innerText = mins == 3 ? '🔥 3m Ignition' : `▶ Start ${mins}m`;
+      document.getElementById('miniStartBtn').innerText = '▶ Start';
+      document.getElementById('timerSpinner').style.animationPlayState = 'paused';
+    }
+
+    function startTaskTimer(title) {
+      appState.activeTaskTitle = title;
+      saveState();
+      changeGear(3);
+      toggleTimer();
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('headerStartBtn');
+      const miniBtn = document.getElementById('miniStartBtn');
+      const spinner = document.getElementById('timerSpinner');
+      if (timerHandle) {
+        clearInterval(timerHandle);
+        timerHandle = null;
+        btn.innerText = '▶ Resume';
+        miniBtn.innerText = '▶ Resume';
+        spinner.style.animationPlayState = 'paused';
+      } else {
+        btn.innerText = '⏸ Pause';
+        miniBtn.innerText = '⏸ Pause';
+        spinner.style.animationPlayState = 'running';
+        timerHandle = setInterval(() => {
+          if (remainingSec > 0) {
+            remainingSec--;
+            if (remainingSec > 0 && remainingSec % 480 === 0) playMindfulnessChime();
+            updateHeaderTimer();
+          } else {
+            playMindfulnessChime();
+            document.getElementById('gearSelect').value = '25';
+            changeGear(25);
+            toggleTimer(); // Seamless auto-roll from 3m Ignition into 25m Gear 2
+          }
+        }, 1000);
+      }
+    }
+
+    function updateHeaderTimer() {
+      const m = String(Math.floor(remainingSec / 60)).padStart(2, '0');
+      const s = String(remainingSec % 60).padStart(2, '0');
+      document.getElementById('headerTimer').innerText = `${m}:${s}`;
+      document.getElementById('miniTimerClock').innerText = `${m}:${s}`;
+    }
+
+    function playMindfulnessChime() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(528, now);
+      osc.frequency.exponentialRampToValueAtTime(264, now + 1.2);
+      gain.gain.setValueAtTime(0.18, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 1.2);
+    }
+
+    function toggleStudyAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const btn = document.getElementById('audioPlayBtn');
+      if (noiseNode) {
+        noiseNode.disconnect();
+        noiseNode = null;
+        btn.innerText = '▶ Play';
+      } else {
+        const bufferSize = 4096;
+        let lastOut = 0.0;
+        const node = audioCtx.createScriptProcessor(bufferSize, 1, 1);
+        node.onaudioprocess = function(e) {
+          const out = e.outputBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            out[i] = (lastOut + (0.02 * white)) / 1.02;
+            lastOut = out[i];
+            out[i] *= 0.04;
+          }
+        };
+        node.connect(audioCtx.destination);
+        noiseNode = node;
+        btn.innerText = '⏹ Stop';
+      }
+    }
+
+    // --- 5-QUESTION RAZOR & NIGHTLY RESET ---
+    function calcRazor() {
+      const count = document.querySelectorAll('.rz-chk:checked').length;
+      const box = document.getElementById('razorStatus');
+      if (count >= 3) {
+        box.className = "p-3 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-bold flex justify-between";
+        box.innerHTML = `<span>Verdict: High-Yield Must-Win (${count}/5)</span><span>✓ Approved</span>`;
+      } else {
+        box.className = "p-3 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-300 font-bold flex justify-between";
+        box.innerHTML = `<span>Verdict: Low-Yield Busywork (${count}/5) — Drop!</span><span>⚠️ Warning</span>`;
+      }
+    }
+
+    function addKanbanTask() {
+      const title = document.getElementById('newTaskTitle').value.trim() || 'New Exam PYQ Block';
+      const col = document.getElementById('newTaskCol').value;
+      const tag = document.getElementById('newTaskTag').value;
+      appState.boardTasks.unshift({
+        id: Date.now(),
+        col,
+        title,
+        desc: 'Verified via 5-Question Razor • Active Problem Set.',
+        date: 'Today • 25m',
+        tag,
+        mesh: 'mesh-1',
+        compressed: false
+      });
+      document.getElementById('newTaskTitle').value = '';
+      saveState();
+      closeModal('razorModal');
+    }
+
+    function lockTomorrowIgnition() {
+      const val = document.getElementById('tomorrowTaskInput').value.trim();
+      if (val) {
+        appState.activeTaskTitle = val;
+        saveState();
+      }
+      playMindfulnessChime();
+      closeModal('reflectionModal');
+    }
+
+    function toggleFreeze() {
+      appState.frozen = !appState.frozen;
+      saveState();
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
+
+    // Init
+    renderAll();
+  </script>
+</body>
+</html>
